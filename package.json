@@ -1,0 +1,25 @@
+{
+  "name": "nippo-automation",
+  "version": "1.0.0",
+  "description": "日報半自動化CLIツール",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "web": "ts-node src/server.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "dotenv": "^16.4.5",
+    "express": "^5.2.1",
+    "groq-sdk": "^1.2.0",
+    "multer": "^2.1.1",
+    "pdf-parse": "^1.1.4"
+  },
+  "devDependencies": {
+    "@types/multer": "^2.1.0",
+    "@types/node": "^20.14.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
