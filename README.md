@@ -12,6 +12,49 @@
 
 ---
 
+## Node.js のインストール（初回のみ）
+
+### 1. インストーラーをダウンロード
+
+[https://nodejs.org/ja/](https://nodejs.org/ja/) を開き、**LTS版**（推奨版）をダウンロードします。
+
+### 2. インストーラーを実行
+
+ダウンロードした `.msi` ファイルをダブルクリックして、画面の指示に従いインストールします。
+途中の選択肢はすべてデフォルトのままで問題ありません。
+
+### 3. PowerShell を再起動する（重要）
+
+インストーラーが PATH（コマンドの検索場所）を自動で設定しますが、**すでに開いているターミナルには反映されません**。
+インストール後は必ず PowerShell を一度閉じて、新しく開き直してください。
+
+### 4. インストールの確認
+
+新しく開いた PowerShell で以下を実行し、バージョンが表示されれば成功です：
+
+```powershell
+node --version
+npm --version
+```
+
+表示例：
+```
+v20.11.0
+10.2.4
+```
+
+### パスの設定は必要ですか？
+
+**不要です。** Node.js の公式インストーラーが `C:\Program Files\nodejs\` を PATH に自動登録します。
+ただし、インストール後に PowerShell を再起動しないと反映されないため、必ず新しいウィンドウで操作してください。
+
+> もし再起動しても `npm` が見つからない場合は、以下のコマンドで現在のセッションだけ PATH を更新できます：
+> ```powershell
+> $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+> ```
+
+---
+
 ## セットアップ
 
 ```bash
