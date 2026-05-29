@@ -72,8 +72,12 @@ export function readCsv(): CsvData {
     throw new Error("input_data.csv に today_goal が設定されていません。");
   }
 
-  const achievementLevel = (Number(meta["achievement"] ?? 3)) as AchievementLevel;
-  const understandingLevel = (Number(meta["understanding"] ?? 3)) as UnderstandingLevel;
+  const toValidLevel = <T extends number>(raw: string | undefined, fallback: T): T => {
+    const n = Number(raw ?? fallback);
+    return ([1, 2, 3, 4].includes(n) ? n : fallback) as T;
+  };
+  const achievementLevel = toValidLevel<AchievementLevel>(meta["achievement"], 3);
+  const understandingLevel = toValidLevel<UnderstandingLevel>(meta["understanding"], 3);
 
   return {
     events,

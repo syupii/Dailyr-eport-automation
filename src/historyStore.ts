@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { DailyReportHistory } from "./types";
 
-const HISTORY_PATH = path.resolve(__dirname, "../history.json");
+const HISTORY_PATH = path.resolve(process.cwd(), "history.json");
 
 const INITIAL_HISTORY: DailyReportHistory[] = [
   {
@@ -45,7 +45,13 @@ export function loadHistory(): DailyReportHistory[] {
   }
 
   const raw = fs.readFileSync(HISTORY_PATH, "utf-8");
-  return JSON.parse(raw) as DailyReportHistory[];
+  try {
+    return JSON.parse(raw) as DailyReportHistory[];
+  } catch {
+    console.warn("[historyStore] history.json が壊れていたため初期化します。");
+    fs.writeFileSync(HISTORY_PATH, JSON.stringify(INITIAL_HISTORY, null, 2), "utf-8");
+    return INITIAL_HISTORY;
+  }
 }
 
 export function saveReport(entry: DailyReportHistory): void {
@@ -58,5 +64,9 @@ export function saveReport(entry: DailyReportHistory): void {
     history.push(entry);
   }
 
-  fs.writeFileSync(HISTORY_PATH, JSON.stringify(history, null, 2), "utf-8");
+  try {
+    fs.writeFileSync(HISTORY_PATH, JSON.stringify(history, null, 2), "utf-8");
+  } catch (err) {
+    console.error("[historyStore] history.json の書き込みに失敗しました:", (err as Error).message);
+  }
 }

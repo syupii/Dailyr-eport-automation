@@ -17,14 +17,30 @@
 
     .container { max-width: 720px; margin: 0 auto; }
 
-    h1 {
-      font-size: 1.4rem;
-      font-weight: 700;
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 24px;
       padding-bottom: 12px;
       border-bottom: 2px solid #4a90e2;
-      color: #1a1a2e;
     }
+
+    h1 { font-size: 1.4rem; font-weight: 700; color: #1a1a2e; }
+
+    .btn-history {
+      background: #eaf2ff;
+      border: 1px solid #b3d0f5;
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #4a90e2;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .btn-history:hover { background: #d0e6ff; }
 
     .card {
       background: #fff;
@@ -41,7 +57,6 @@
       letter-spacing: 0.05em;
       margin-bottom: 14px;
     }
-
     .section-sub {
       font-size: 0.78rem;
       color: #999;
@@ -68,92 +83,50 @@
       transition: border-color 0.2s;
       color: #2c2c2c;
     }
-
     input:focus, textarea:focus, select:focus {
       outline: none;
       border-color: #4a90e2;
       background: #fff;
     }
-
     textarea { resize: vertical; min-height: 72px; }
 
     .field-group { margin-bottom: 14px; }
 
-    .level-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
+    .level-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-    /* Events */
     .event-row, .memo-row {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      margin-bottom: 8px;
+      display: flex; gap: 8px; align-items: center; margin-bottom: 8px;
     }
     .event-row .time-input { width: 90px; flex-shrink: 0; }
     .event-row .title-input, .memo-row input { flex: 1; }
     .time-sep { font-size: 0.9rem; color: #aaa; flex-shrink: 0; }
 
     .btn-remove {
-      background: none;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      width: 28px; height: 28px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      color: #999;
-      flex-shrink: 0;
-      transition: all 0.15s;
+      background: none; border: 1px solid #ddd; border-radius: 5px;
+      width: 28px; height: 28px; cursor: pointer; font-size: 0.9rem;
+      color: #999; flex-shrink: 0; transition: all 0.15s;
       display: flex; align-items: center; justify-content: center;
     }
     .btn-remove:hover { background: #fee; border-color: #e55; color: #e55; }
 
     .btn-add {
-      background: none;
-      border: 1px dashed #aaa;
-      border-radius: 7px;
-      padding: 6px 14px;
-      cursor: pointer;
-      font-size: 0.82rem;
-      color: #666;
-      margin-top: 4px;
-      transition: all 0.15s;
-      font-family: inherit;
+      background: none; border: 1px dashed #aaa; border-radius: 7px;
+      padding: 6px 14px; cursor: pointer; font-size: 0.82rem; color: #666;
+      margin-top: 4px; transition: all 0.15s; font-family: inherit;
     }
     .btn-add:hover { border-color: #4a90e2; color: #4a90e2; background: #f0f6ff; }
 
-    /* Hints */
-    .hints-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
+    .hints-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     @media (max-width: 560px) { .hints-grid { grid-template-columns: 1fr; } }
 
-    .hint-label-sub {
-      font-size: 0.75rem;
-      color: #aaa;
-      font-weight: 400;
-      margin-left: 4px;
-    }
+    .hint-label-sub { font-size: 0.75rem; color: #aaa; font-weight: 400; margin-left: 4px; }
 
-    /* File upload */
     .file-drop-area {
-      border: 2px dashed #c8d8f0;
-      border-radius: 9px;
-      padding: 20px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s;
-      background: #f7faff;
-      position: relative;
+      border: 2px dashed #c8d8f0; border-radius: 9px; padding: 20px;
+      text-align: center; cursor: pointer; transition: all 0.2s;
+      background: #f7faff; position: relative;
     }
-    .file-drop-area:hover, .file-drop-area.drag-over {
-      border-color: #4a90e2;
-      background: #eef4ff;
-    }
+    .file-drop-area:hover, .file-drop-area.drag-over { border-color: #4a90e2; background: #eef4ff; }
     .file-drop-area input[type="file"] {
       position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
     }
@@ -162,96 +135,126 @@
     .file-drop-sub { font-size: 0.78rem; color: #aaa; margin-top: 4px; }
     .file-list { margin-top: 12px; }
     .file-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 10px;
-      background: #f0f4ff;
-      border-radius: 6px;
-      margin-bottom: 6px;
-      font-size: 0.85rem;
+      display: flex; align-items: center; gap: 8px; padding: 6px 10px;
+      background: #f0f4ff; border-radius: 6px; margin-bottom: 6px; font-size: 0.85rem;
     }
     .file-item-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .file-item-size { color: #999; font-size: 0.78rem; flex-shrink: 0; }
 
-    /* Submit */
     .btn-submit {
-      width: 100%;
-      padding: 14px;
-      background: #4a90e2;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: inherit;
-      transition: background 0.2s;
+      width: 100%; padding: 14px; background: #4a90e2; color: #fff;
+      border: none; border-radius: 10px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; font-family: inherit; transition: background 0.2s;
     }
     .btn-submit:hover:not(:disabled) { background: #357abd; }
     .btn-submit:disabled { background: #b0c8e8; cursor: not-allowed; }
 
-    /* Result */
-    #result-area { display: none; }
-
-    .result-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    /* 自動保存インジケーター */
+    .save-indicator {
+      font-size: 0.75rem;
+      color: #aaa;
+      text-align: right;
+      margin-top: -10px;
       margin-bottom: 12px;
     }
 
-    .btn-copy {
-      background: #eaf2ff;
-      border: 1px solid #b3d0f5;
-      border-radius: 7px;
-      padding: 6px 14px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #4a90e2;
-      cursor: pointer;
-      font-family: inherit;
-      transition: all 0.15s;
+    /* 結果エリア */
+    #result-area { display: none; }
+
+    .result-header {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;
     }
-    .btn-copy:hover { background: #d0e6ff; }
-    .btn-copy.copied { background: #e8f7ee; border-color: #7ecfa0; color: #2e9e5a; }
+    .result-header .section-title { margin-bottom: 0; flex: 1; }
+
+    .btn-action {
+      background: #eaf2ff; border: 1px solid #b3d0f5; border-radius: 7px;
+      padding: 6px 12px; font-size: 0.82rem; font-weight: 600; color: #4a90e2;
+      cursor: pointer; font-family: inherit; transition: all 0.15s;
+    }
+    .btn-action:hover { background: #d0e6ff; }
+    .btn-action.success { background: #e8f7ee; border-color: #7ecfa0; color: #2e9e5a; }
+    .btn-action.regen { background: #fff3e0; border-color: #ffcc80; color: #e67e22; }
+    .btn-action.regen:hover { background: #ffe0b2; }
 
     #report-output {
-      background: #f8f9fc;
-      border: 1px solid #e0e4ef;
-      border-radius: 8px;
-      padding: 16px;
-      font-size: 0.92rem;
-      line-height: 1.75;
-      white-space: pre-wrap;
-      word-break: break-word;
+      width: 100%; min-height: 300px; padding: 16px;
+      background: #f8f9fc; border: 1px solid #e0e4ef; border-radius: 8px;
+      font-size: 0.92rem; line-height: 1.75; font-family: inherit;
+      resize: vertical; color: #2c2c2c;
     }
 
     .error-msg {
-      color: #c0392b;
-      background: #fdf0ee;
-      border: 1px solid #f5c6c0;
-      border-radius: 8px;
-      padding: 12px 16px;
-      font-size: 0.9rem;
+      color: #c0392b; background: #fdf0ee; border: 1px solid #f5c6c0;
+      border-radius: 8px; padding: 12px 16px; font-size: 0.9rem;
     }
 
     .spinner {
-      display: inline-block;
-      width: 15px; height: 15px;
-      border: 2px solid rgba(255,255,255,0.4);
-      border-top-color: #fff;
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-      vertical-align: middle;
-      margin-right: 8px;
+      display: inline-block; width: 15px; height: 15px;
+      border: 2px solid rgba(255,255,255,0.4); border-top-color: #fff;
+      border-radius: 50%; animation: spin 0.7s linear infinite;
+      vertical-align: middle; margin-right: 8px;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* 履歴モーダル */
+    .modal-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+      z-index: 100; display: none; align-items: center; justify-content: center;
+    }
+    .modal-backdrop.open { display: flex; }
+
+    .modal-box {
+      background: #fff; border-radius: 14px;
+      width: min(92vw, 860px); height: min(85vh, 600px);
+      display: flex; flex-direction: column; box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      overflow: hidden;
+    }
+
+    .modal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 20px; border-bottom: 1px solid #eee; flex-shrink: 0;
+    }
+    .modal-header h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; }
+    .btn-modal-close {
+      background: none; border: none; font-size: 1.2rem; cursor: pointer;
+      color: #aaa; line-height: 1; padding: 4px;
+    }
+    .btn-modal-close:hover { color: #555; }
+
+    .modal-body { display: flex; flex: 1; overflow: hidden; }
+
+    .history-list {
+      width: 200px; flex-shrink: 0; border-right: 1px solid #eee;
+      overflow-y: auto; padding: 8px;
+    }
+
+    .history-item {
+      padding: 10px 12px; border-radius: 8px; cursor: pointer;
+      font-size: 0.88rem; color: #444; transition: background 0.15s; margin-bottom: 2px;
+    }
+    .history-item:hover { background: #f0f4ff; }
+    .history-item.active { background: #4a90e2; color: #fff; }
+
+    .history-detail {
+      flex: 1; overflow-y: auto; padding: 16px;
+    }
+
+    #history-detail-text {
+      font-family: inherit; font-size: 0.9rem; line-height: 1.75;
+      white-space: pre-wrap; color: #2c2c2c;
+    }
+
+    .history-empty {
+      color: #aaa; font-size: 0.9rem; padding: 20px; text-align: center;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>日報作成</h1>
+    <div class="page-header">
+      <h1>日報作成</h1>
+      <button class="btn-history" onclick="openHistory()">📋 過去の日報</button>
+    </div>
 
     <!-- 基本情報 -->
     <div class="card">
@@ -323,8 +326,7 @@
     <div class="card">
       <div class="section-title">参考資料<span class="section-sub">任意 / PDF・テキストファイルに対応</span></div>
       <div class="file-drop-area" id="drop-area">
-        <input type="file" id="file-input" multiple accept=".txt,.md,.pdf,.csv,.log"
-          onchange="updateFileList(this.files)" />
+        <input type="file" id="file-input" multiple accept=".txt,.md,.pdf,.csv,.log" onchange="updateFileList(this.files)" />
         <div class="file-drop-icon">📎</div>
         <div class="file-drop-text">クリックしてファイルを選択、またはここにドラッグ＆ドロップ</div>
         <div class="file-drop-sub">対応形式: PDF / テキスト (.txt .md .csv) ／ 最大10MB / 5ファイルまで</div>
@@ -334,44 +336,85 @@
 
     <!-- 生成ボタン -->
     <div class="card">
+      <div class="save-indicator" id="save-indicator"></div>
       <button class="btn-submit" id="submit-btn" onclick="generate()">日報を生成する</button>
     </div>
 
     <!-- 結果 -->
     <div class="card" id="result-area">
       <div class="result-header">
-        <div class="section-title" style="margin-bottom:0">生成された日報</div>
-        <button class="btn-copy" id="copy-btn" onclick="copyReport()">コピー</button>
+        <div class="section-title">生成された日報</div>
+        <button class="btn-action regen" id="regen-btn" onclick="generate()">↺ 再生成</button>
+        <button class="btn-action" id="copy-btn" onclick="copyReport()">コピー</button>
+        <button class="btn-action" id="dl-btn" onclick="downloadReport()">ダウンロード</button>
       </div>
-      <div id="report-output"></div>
+      <textarea id="report-output" placeholder="ここに日報が表示されます"></textarea>
+    </div>
+  </div>
+
+  <!-- 履歴モーダル -->
+  <div class="modal-backdrop" id="history-modal" onclick="handleModalClick(event)">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2>📋 過去の日報</h2>
+        <button class="btn-modal-close" onclick="closeHistory()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="history-list" id="history-list-panel"></div>
+        <div class="history-detail">
+          <pre id="history-detail-text" class="history-empty">← 日付を選択してください</pre>
+        </div>
+      </div>
     </div>
   </div>
 
   <script>
+    // ===== 定数 =====
+    const STORAGE_KEY = "nippo_form_v1";
     let eventCount = 0, memoCount = 0;
+    let saveTimer = null;
+    let isGenerating = false;
+    let lastFormData = null; // 再生成用
+
+    // ===== 行追加ユーティリティ =====
+    function makeInput(type, cls, value, placeholder) {
+      const el = document.createElement("input");
+      el.type = type; el.className = cls; el.value = value; el.placeholder = placeholder;
+      return el;
+    }
+    function makeRemoveBtn(rowId) {
+      const btn = document.createElement("button");
+      btn.className = "btn-remove"; btn.title = "削除"; btn.textContent = "✕";
+      btn.onclick = () => { removeRow(rowId); debouncedSave(); };
+      return btn;
+    }
 
     function addEvent(title = "", start = "", end = "") {
       const id = ++eventCount;
+      const rowId = `event-${id}`;
       const div = document.createElement("div");
-      div.className = "event-row";
-      div.id = `event-${id}`;
-      div.innerHTML = `
-        <input type="time" class="time-input event-start" value="${start}" />
-        <span class="time-sep">〜</span>
-        <input type="time" class="time-input event-end" value="${end}" />
-        <input type="text" class="title-input event-title" value="${title}" placeholder="予定名（例：朝会）" />
-        <button class="btn-remove" onclick="removeRow('event-${id}')" title="削除">✕</button>`;
+      div.className = "event-row"; div.id = rowId;
+      const sep = document.createElement("span");
+      sep.className = "time-sep"; sep.textContent = "〜";
+      div.append(
+        makeInput("time", "time-input event-start", start, ""),
+        sep,
+        makeInput("time", "time-input event-end", end, ""),
+        makeInput("text", "title-input event-title", title, "予定名（例：朝会）"),
+        makeRemoveBtn(rowId)
+      );
       document.getElementById("events-list").appendChild(div);
     }
 
     function addMemo(text = "") {
       const id = ++memoCount;
+      const rowId = `memo-${id}`;
       const div = document.createElement("div");
-      div.className = "memo-row";
-      div.id = `memo-${id}`;
-      div.innerHTML = `
-        <input type="text" class="memo-text" value="${text}" placeholder="作業内容・気づき（例：バグを修正した）" />
-        <button class="btn-remove" onclick="removeRow('memo-${id}')" title="削除">✕</button>`;
+      div.className = "memo-row"; div.id = rowId;
+      div.append(
+        makeInput("text", "memo-text", text, "作業内容・気づき（例：バグを修正した）"),
+        makeRemoveBtn(rowId)
+      );
       document.getElementById("memos-list").appendChild(div);
     }
 
@@ -380,15 +423,13 @@
       if (el) el.remove();
     }
 
-    // Drag & drop
+    // ===== Drag & Drop =====
     const dropArea = document.getElementById("drop-area");
     dropArea.addEventListener("dragover", e => { e.preventDefault(); dropArea.classList.add("drag-over"); });
     dropArea.addEventListener("dragleave", () => dropArea.classList.remove("drag-over"));
     dropArea.addEventListener("drop", e => {
       e.preventDefault();
       dropArea.classList.remove("drag-over");
-      const fileInput = document.getElementById("file-input");
-      fileInput.files = e.dataTransfer.files;
       updateFileList(e.dataTransfer.files);
     });
 
@@ -401,80 +442,277 @@
           : `${(file.size / 1024 / 1024).toFixed(1)} MB`;
         const item = document.createElement("div");
         item.className = "file-item";
-        item.innerHTML = `<span>📄</span><span class="file-item-name">${file.name}</span><span class="file-item-size">${size}</span>`;
+        const icon = document.createElement("span"); icon.textContent = "📄";
+        const name = document.createElement("span"); name.className = "file-item-name"; name.textContent = file.name;
+        const sz = document.createElement("span"); sz.className = "file-item-size"; sz.textContent = size;
+        item.append(icon, name, sz);
         list.appendChild(item);
       });
     }
 
-    async function generate() {
+    // ===== localStorage 自動保存 =====
+    function collectFormState() {
+      const events = Array.from(document.querySelectorAll(".event-row")).map(row => ({
+        title: row.querySelector(".event-title")?.value ?? "",
+        start: row.querySelector(".event-start")?.value ?? "",
+        end:   row.querySelector(".event-end")?.value ?? "",
+      }));
+      const memos = Array.from(document.querySelectorAll(".memo-text")).map(el => el.value);
+      return {
+        todayGoal:      document.getElementById("today-goal").value,
+        achievement:    document.getElementById("achievement").value,
+        understanding:  document.getElementById("understanding").value,
+        hintImpression: document.getElementById("hint-impression").value,
+        hintReason:     document.getElementById("hint-reason").value,
+        hintDifficulty: document.getElementById("hint-difficulty").value,
+        hintTomorrow:   document.getElementById("hint-tomorrow").value,
+        events, memos,
+        savedDate: new Date().toISOString().slice(0, 10),
+      };
+    }
+
+    function saveFormState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(collectFormState()));
+        const ind = document.getElementById("save-indicator");
+        const t = new Date().toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" });
+        ind.textContent = `自動保存済み ${t}`;
+      } catch { /* quota exceeded etc. */ }
+    }
+
+    function debouncedSave() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveFormState, 800);
+    }
+
+    function restoreFormState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return false;
+        const state = JSON.parse(raw);
+        const today = new Date().toISOString().slice(0, 10);
+        if (state.savedDate !== today) { localStorage.removeItem(STORAGE_KEY); return false; }
+
+        document.getElementById("today-goal").value      = state.todayGoal ?? "";
+        document.getElementById("achievement").value     = state.achievement ?? "3";
+        document.getElementById("understanding").value   = state.understanding ?? "3";
+        document.getElementById("hint-impression").value = state.hintImpression ?? "";
+        document.getElementById("hint-reason").value     = state.hintReason ?? "";
+        document.getElementById("hint-difficulty").value = state.hintDifficulty ?? "";
+        document.getElementById("hint-tomorrow").value   = state.hintTomorrow ?? "";
+
+        document.getElementById("events-list").innerHTML = "";
+        eventCount = 0;
+        if (state.events?.length > 0) state.events.forEach(e => addEvent(e.title, e.start, e.end));
+        else addEvent();
+
+        document.getElementById("memos-list").innerHTML = "";
+        memoCount = 0;
+        if (state.memos?.length > 0) state.memos.forEach(m => addMemo(m));
+        else addMemo();
+
+        return true;
+      } catch { return false; }
+    }
+
+    // フォーム変更を監視して自動保存
+    document.addEventListener("input", debouncedSave);
+    document.addEventListener("change", debouncedSave);
+
+    // ===== 日報生成（ストリーミング） =====
+    function collectFormData() {
       const todayGoal = document.getElementById("today-goal").value.trim();
+      const events = Array.from(document.querySelectorAll(".event-row")).map(row => ({
+        title:     row.querySelector(".event-title").value.trim(),
+        startTime: row.querySelector(".event-start").value,
+        endTime:   row.querySelector(".event-end").value,
+      })).filter(e => e.title && e.startTime && e.endTime);
+
+      const memos = Array.from(document.querySelectorAll(".memo-text"))
+        .map(el => el.value.trim()).filter(t => t !== "");
+
+      const fd = new FormData();
+      fd.append("todayGoal", todayGoal);
+      fd.append("achievementLevel",  document.getElementById("achievement").value);
+      fd.append("understandingLevel", document.getElementById("understanding").value);
+      fd.append("events", JSON.stringify(events));
+      fd.append("memos",  JSON.stringify(memos));
+      fd.append("hintImpression",  document.getElementById("hint-impression").value.trim());
+      fd.append("hintReason",      document.getElementById("hint-reason").value.trim());
+      fd.append("hintDifficulty",  document.getElementById("hint-difficulty").value.trim());
+      fd.append("hintTomorrowGoal", document.getElementById("hint-tomorrow").value.trim());
+      Array.from(document.getElementById("file-input").files).forEach(f => fd.append("files", f));
+
+      return { todayGoal, formData: fd };
+    }
+
+    function setGenerating(on) {
+      isGenerating = on;
+      const btn = document.getElementById("submit-btn");
+      const regen = document.getElementById("regen-btn");
+      btn.disabled = on;
+      regen.disabled = on;
+      btn.innerHTML = on ? '<span class="spinner"></span>生成中...' : "日報を生成する";
+    }
+
+    function showError(msg) {
+      const output = document.getElementById("report-output");
+      output.value = `【エラー】\n${msg}`;
+    }
+
+    async function generate() {
+      if (isGenerating) return;
+      const { todayGoal, formData } = collectFormData();
       if (!todayGoal) {
         alert("今日の目標を入力してください。");
         document.getElementById("today-goal").focus();
         return;
       }
 
-      const events = Array.from(document.querySelectorAll(".event-row")).map(row => ({
-        title: row.querySelector(".event-title").value.trim(),
-        startTime: row.querySelector(".event-start").value,
-        endTime: row.querySelector(".event-end").value,
-      })).filter(e => e.title && e.startTime && e.endTime);
-
-      const memos = Array.from(document.querySelectorAll(".memo-text"))
-        .map(el => el.value.trim()).filter(t => t !== "");
-
-      const formData = new FormData();
-      formData.append("todayGoal", todayGoal);
-      formData.append("achievementLevel", document.getElementById("achievement").value);
-      formData.append("understandingLevel", document.getElementById("understanding").value);
-      formData.append("events", JSON.stringify(events));
-      formData.append("memos", JSON.stringify(memos));
-      formData.append("hintImpression", document.getElementById("hint-impression").value.trim());
-      formData.append("hintReason", document.getElementById("hint-reason").value.trim());
-      formData.append("hintDifficulty", document.getElementById("hint-difficulty").value.trim());
-      formData.append("hintTomorrowGoal", document.getElementById("hint-tomorrow").value.trim());
-
-      const files = document.getElementById("file-input").files;
-      Array.from(files).forEach(file => formData.append("files", file));
-
-      const btn = document.getElementById("submit-btn");
-      btn.disabled = true;
-      btn.innerHTML = '<span class="spinner"></span>生成中...';
+      lastFormData = formData;
+      setGenerating(true);
 
       const resultArea = document.getElementById("result-area");
       const output = document.getElementById("report-output");
-      resultArea.style.display = "none";
+      output.value = "";
+      resultArea.style.display = "block";
+      resultArea.scrollIntoView({ behavior: "smooth" });
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 90_000);
 
       try {
-        const res = await fetch("/api/generate", { method: "POST", body: formData });
-        const json = await res.json();
+        const res = await fetch("/api/generate-stream", {
+          method: "POST", body: formData, signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+
         if (!res.ok) {
-          output.innerHTML = `<div class="error-msg">エラー: ${json.error ?? "不明なエラー"}</div>`;
-        } else {
-          output.textContent = json.report;
+          const json = await res.json().catch(() => ({}));
+          showError(json.error ?? `HTTP ${res.status}`);
+          return;
         }
-        resultArea.style.display = "block";
-        resultArea.scrollIntoView({ behavior: "smooth" });
+
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+
+          const blocks = buffer.split("\n\n");
+          buffer = blocks.pop() ?? "";
+
+          for (const block of blocks) {
+            if (!block.startsWith("data: ")) continue;
+            try {
+              const data = JSON.parse(block.slice(6));
+              if (data.text)  output.value += data.text;
+              if (data.error) showError(data.error);
+            } catch { /* ignore */ }
+          }
+        }
+
       } catch (err) {
-        output.innerHTML = `<div class="error-msg">通信エラー: ${err.message}</div>`;
-        resultArea.style.display = "block";
+        clearTimeout(timeoutId);
+        showError(err.name === "AbortError"
+          ? "タイムアウト（90秒）: サーバーの応答がありませんでした。"
+          : `通信エラー: ${err.message}`);
       } finally {
-        btn.disabled = false;
-        btn.textContent = "日報を生成する";
+        setGenerating(false);
       }
     }
 
+    // ===== コピー =====
     async function copyReport() {
-      const text = document.getElementById("report-output").textContent;
-      await navigator.clipboard.writeText(text);
-      const btn = document.getElementById("copy-btn");
-      btn.textContent = "コピーしました！";
-      btn.classList.add("copied");
-      setTimeout(() => { btn.textContent = "コピー"; btn.classList.remove("copied"); }, 2000);
+      const text = document.getElementById("report-output").value;
+      try {
+        await navigator.clipboard.writeText(text);
+        const btn = document.getElementById("copy-btn");
+        btn.textContent = "コピーしました！";
+        btn.classList.add("success");
+        setTimeout(() => { btn.textContent = "コピー"; btn.classList.remove("success"); }, 2000);
+      } catch {
+        alert("クリップボードへのコピーに失敗しました。\n手動で選択してコピーしてください。");
+      }
     }
 
-    addEvent();
-    addMemo();
+    // ===== ダウンロード =====
+    function downloadReport() {
+      const text = document.getElementById("report-output").value;
+      if (!text.trim()) return;
+      const today = new Date().toISOString().slice(0, 10);
+      const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `日報_${today}.txt`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    // ===== 履歴モーダル =====
+    async function openHistory() {
+      const modal = document.getElementById("history-modal");
+      modal.classList.add("open");
+      document.getElementById("history-detail-text").textContent = "← 日付を選択してください";
+      document.getElementById("history-detail-text").className = "history-empty";
+
+      const panel = document.getElementById("history-list-panel");
+      panel.innerHTML = "<div style='padding:12px;color:#aaa;font-size:.85rem'>読み込み中...</div>";
+
+      try {
+        const res = await fetch("/api/history");
+        const history = await res.json();
+
+        panel.innerHTML = "";
+        if (history.length === 0) {
+          panel.innerHTML = "<div class='history-empty'>履歴がありません</div>";
+          return;
+        }
+
+        history.forEach((entry, i) => {
+          const item = document.createElement("div");
+          item.className = "history-item";
+          item.textContent = entry.date;
+          item.onclick = () => {
+            document.querySelectorAll(".history-item").forEach(el => el.classList.remove("active"));
+            item.classList.add("active");
+            const detail = document.getElementById("history-detail-text");
+            detail.textContent = entry.reportText;
+            detail.className = "";
+          };
+          panel.appendChild(item);
+          if (i === 0) item.click(); // 最新を自動表示
+        });
+      } catch {
+        panel.innerHTML = "<div class='history-empty'>読み込みに失敗しました</div>";
+      }
+    }
+
+    function closeHistory() {
+      document.getElementById("history-modal").classList.remove("open");
+    }
+
+    function handleModalClick(e) {
+      if (e.target === document.getElementById("history-modal")) closeHistory();
+    }
+
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeHistory(); });
+
+    // ===== 初期化 =====
+    const restored = restoreFormState();
+    if (!restored) {
+      addEvent();
+      addMemo();
+      // 前回の日報から「明日の目標」を自動入力
+      fetch("/api/last-tomorrow-goal").then(r => r.json()).then(json => {
+        if (json.tomorrowGoal && !document.getElementById("today-goal").value) {
+          document.getElementById("today-goal").value = json.tomorrowGoal;
+        }
+      }).catch(() => {});
+    }
   </script>
 </body>
 </html>
